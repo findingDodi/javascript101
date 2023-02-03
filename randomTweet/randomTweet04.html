@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Random tweet</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<div class="form-group col-6">
+				<h2>Create a Random Tweet!</h2>
+				<h3>Step 1</h3>
+				<p>Select your file:</p>
+				<input type="file" id="upload" class="form-control">
+
+				<p><br/></p>
+
+				<h3>Step 2</h3>
+				<p>Select your number of Words:</p>
+				<label for="userAmount">Number</label>
+				<input id="userAmount" type="number" class="form-control">
+
+				<button class="btn btn-secondary mt-3" onclick="randomTweet()">Get random Tweet</button>
+			</div>
+
+			<pre id="randomTweet" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+
+			// Funktion erstellt einen zufälligen String mit der gewünschten Anzahl aus einem Array
+			function getRandomWordsFromArray(_array) {
+				let _randomArray = [];
+				let _words = '';
+				let _wordAmount = document.getElementById("userAmount").value;
+
+				for (let i = 0; i < _wordAmount; i++) {
+					let _randomNumber = Math.floor(Math.random() * _array.length);
+					_randomArray.push(_array[_randomNumber]);
+				}
+
+				for (let i = 0; i < _randomArray.length; i++) {
+					_words = _randomArray.join(' ');
+				}
+
+				// alle Zeichen außer Buchstaben entfernen
+                _words = _words.replace(/[^a-zA-Z]/g, ' ');
+				// doppelte Leerzeichen auflösen
+                _words = _words.replace(/\s+/g, ' ');
+
+                // Abfrage, ob Zeichen 140 überschreiten
+				if(_words.length > 141) {
+				    // Substring bilden
+					_words = _words.substring(0, 140);
+					// Array erstellen
+                    _words = _words.split(' ');
+                    // letztes Wort entfernen
+                    _words.pop();
+                    //console.log("Anzahl der Worte (nach Kürzung): " + _words.length)
+					// String wieder zusammenbauen
+                    _words = _words.join(' ');
+                    //console.log("Länge der Zeichen (inkl. Leerzeichen): "+ _words.length);
+				}
+
+				return _words;
+			}
+
+			// onClick()-Funktion zum Erstellen eines Random Tweets
+			// verwendet "hochgeladene" Datei
+			function randomTweet() {
+				let _upload = document.getElementById('upload');
+				let _file = _upload.files[0];
+				let _textType = /text.*/;
+
+				if (_file.type.match(_textType)) {
+					let _reader = new FileReader();
+
+					_reader.onload = function () {
+						let _result = _reader.result;
+						let _resultArray = _result.split(' ');
+
+						document.getElementById("randomTweet").innerHTML = getRandomWordsFromArray(_resultArray);
+					};
+
+					_reader.readAsText(_file);
+				}
+			}
+
+		</script>
+	</body>
+</html>

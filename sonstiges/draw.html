@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Draw</title>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/eigene.css" rel="stylesheet" />
+        <style>
+            canvas {
+                position: absolute;
+                left: 0;
+                z-index: -1000;
+            }
+        </style>
+    </head>
+    <body class="mt-2 ms-2">
+        <button value="#3ADF00" id="green" class="btn btn-success" onclick="changeColorToGreen()">Green</button>
+        <button value="#DF0101" id="red" class="btn btn-danger" onclick="changeColorToRed()">Red</button>
+        <button value="#ACD3ED" id="blue" class="btn btn-info" onclick="changeColorToBlue()">Blue</button>
+        <button value="#FFEA00" id="yellow" class="btn btn-warning" onclick="changeColorToYellow()">Yellow</button>
+        <button value="#000000" id="black" class="btn btn-dark" onclick="changeColorToBlack()">Black</button>
+        <button value="#FFFFFF" id="white" class="btn btn-light" onclick="changeColorToWhite()">White</button>
+
+        <canvas id="canvas" width="100%" height="100%"></canvas>
+
+        <script>
+            let canvas = document.getElementById('canvas');
+            let canvasContext = canvas.getContext('2d');
+            let coordinates = {x:0, y:0};
+
+            document.addEventListener('mousedown', start);
+            document.addEventListener('mouseup', stop);
+            window.addEventListener("resize", resize);
+
+            resize();
+
+            function resize() {
+                canvasContext.canvas.width = window.innerWidth;
+                canvasContext.canvas.height = window.innerHeight;
+            }
+
+            function reposition(event) {
+                coordinates.x = event.clientX - canvas.offsetLeft;
+                coordinates.y = event.clientY - canvas.offsetTop;
+            }
+
+            function start(event) {
+                document.addEventListener("mousemove", draw);
+                reposition(event);
+            }
+
+            function stop() {
+                document.removeEventListener("mousemove", draw);
+            }
+
+            function draw(event) {
+                canvasContext.beginPath();
+                canvasContext.lineWidth = 10;
+                canvasContext.lineCap = "round";
+                canvasContext.moveTo(coordinates.x, coordinates.y);
+                reposition(event);
+                canvasContext.lineTo(coordinates.x, coordinates.y);
+                canvasContext.stroke();
+            }
+
+            function changeColorToRed() {
+                canvasContext.strokeStyle = document.getElementById('red').value;
+            }
+
+            function changeColorToGreen() {
+                canvasContext.strokeStyle = document.getElementById('green').value;
+            }
+
+            function changeColorToBlue() {
+                canvasContext.strokeStyle = document.getElementById('blue').value;
+            }
+
+            function changeColorToYellow() {
+                canvasContext.strokeStyle = document.getElementById('yellow').value;
+            }
+
+            function changeColorToBlack() {
+                canvasContext.strokeStyle = document.getElementById('black').value;
+            }
+
+            function changeColorToWhite() {
+                canvasContext.strokeStyle = document.getElementById('white').value;
+            }
+        </script>
+    </body>
+</html>

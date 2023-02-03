@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coding 101 - CHANGE ME!</title>
+	</head>
+	<body>
+
+		<!-- über den Script-Block getan -->
+		<h1 id="myHeader">NO HEADER - CHANGE ME!</h1>
+		<p id="myParagraph"></p>
+
+		<script type="text/javascript">
+			/*
+			*	the output should show 10 lines with numbers
+			*/
+
+			let pageTitle = 'magic hamster page';
+			let pageHeadline = 'magic hamster title headline';
+
+			let outputLines = 10;
+
+			document.title = pageTitle;
+
+			let header1 = document.getElementById("myHeader");
+			header1.innerHTML = pageHeadline;
+
+			let paragraph = document.getElementById("myParagraph");
+
+			for (let i = 1; i <= outputLines; i++) {
+				paragraph.innerHTML += 'here is line number ' + i + "<br>\n";
+			}
+
+		</script>
+
+		
+	</body>
+</html>

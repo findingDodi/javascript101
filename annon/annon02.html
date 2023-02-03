@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding 101</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		let startnumber = parseInt(prompt("Enter Startnumber", "7"));
+		let userinputs = [];
+		let magicfunctions = [];
+
+		magicfunctions.push(function(value) {
+			return value + value;
+		});
+
+		magicfunctions.push(function(value) {
+			return value - 2;
+		});
+
+		magicfunctions.push(function(value) {
+			return value * value;
+		});
+
+		magicfunctions.push(function(value) {
+			return value / 4;
+		});
+
+		let keeprunning = true;
+
+		while (keeprunning) {
+			let userinput = parseInt(prompt("Enter Order", "0-3"));
+			//console.log(userinput);
+			if (isNaN(userinput)) {
+				keeprunning = false;
+			} else {
+				userinputs.push(userinput);
+			}
+			
+		}
+
+		let result = startnumber;
+
+		for (let i = 0; i < userinputs.length; i++) {
+			//result = magicfunctions[userinputs[i]](result);
+
+			result = magicfunctions[
+						userinputs[i]
+					](result);
+
+		}
+
+		console.log(result);
+
+		//console.log(magicfunctions[0](startnumber));
+
+	</script>
+</body>
+</html>

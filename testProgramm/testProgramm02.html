@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test Programm 2</title>
+	<meta charset="utf-8">
+</head>
+<body style="background-color: black;">
+	<script type="text/javascript">
+
+		let trennung = "**********";
+
+ 		// Funktion um Zahlen von 1 bis x in ein Array pusht und in die Console logged
+ 		function numbers(_amount) {
+ 			let _numbers = '';
+ 			for (let i = 0; i < _amount; i++) {
+ 				_numbers += (i + 1) + ' ';
+ 			}
+ 			return _numbers;
+ 		}
+
+ 		// Funktion um Zahlen von 1 bis x in 5er Schritten in ein Array pusht und in die Console logged
+ 		function numbersModuloFive(_amount) {
+ 			let _numbers = '';
+ 			for (let i = 0; i < _amount; i++) {
+ 				if (i % 5 == 0) {
+ 					_numbers += i + ' ';
+ 				}
+ 			}
+ 			return _numbers;
+ 		}
+ 		
+ 		let age = parseInt(prompt("Wie alt bist du ?"));
+
+ 		if (age >= 18) {
+ 			console.log("Zugriff gewährt! Du bist über 18.");
+
+ 			let username = prompt("Bitte Benutzernamen eingeben!");
+ 			let password = prompt("Bitte Passwort eingeben!");
+ 			if (username == "username" && password == "password") {
+ 				console.log("Benutzername und Passwort sind korrekt! Du bist nun angemeldet!");
+ 				
+				let check1 = confirm("Willst du die Zahlen von 0-999 ausgegeben haben?");
+				if (check1) {
+					console.log(numbers(999));
+				}
+
+				console.log(trennung); 					
+
+				let check2 = confirm("Willst du jede durch 5 teilbare Zahl im Zahlenraum 1-99 ausgegeben haben?");
+				if (check2) {
+					console.log(numbersModuloFive(99));
+				}
+
+				console.log(trennung); 
+
+				let userText = prompt("Gib hier einen beliebigen Text ein, der auf die Console ausgegeben werden soll!")
+				console.log(userText);
+
+				alert("Das Programm wurde erfolgreich ausgeführt!");
+ 					
+
+			} else {
+				console.log("Deine Daten sind nicht korrekt! Das Programm wird nicht gestartet!");
+				alert("Deine Daten sind nicht korrekt! Das Programm wird nicht gestartet!");
+			}
+
+
+ 		} else {
+ 			console.log("Zugriff verweigert! Du musst mindestens 18 sein!");
+ 			alert("Zugriff verweigert! Du musst mindestens 18 sein!");
+ 		}
+			
+	</script>
+ 		
+</body>
+</html>

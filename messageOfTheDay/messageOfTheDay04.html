@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Message of the Day 3</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<h2>Get your Messages of the Day!</h2>
+			<div class="col-6">
+				<button class="btn btn-success" type="button" onclick="printRandomMessage()">get messages</button>
+				<button class="btn btn-danger" type="button" onclick="stop()">clear</button>
+			</div>
+			<pre id="message" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+
+            function stop() {
+                document.getElementById("message").innerHTML = "";
+			}
+
+			function printRandomMessage() {
+                let _nachrichten = [
+                    "No one is perfect - that’s why pencils have erasers. - Wolfgang Riebe",
+                    "Have no fear of perfection - you'll never reach it. - Salvador Dali",
+                    "The tallest mountain started as a stone. - One Punch Man Intro",
+                    "Make it work. Make it nice. Make it fast. Always obey this order! - kiraa",
+                    "A good programmer is someone who always looks both ways before crossing a one-way street. – Doug Linder",
+                    "If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger W. Dijkstra"
+                ];
+				let _randomArray = _nachrichten.sort(()=> Math.random() - 0.5);
+				let _output = "";
+
+				for (let i = 0; i < _randomArray.length; i++) {
+					_output += _randomArray[i] + "<br/>";
+                    document.getElementById("message").innerHTML = _output;
+				}
+
+
+			}
+
+		</script>
+	</body>
+</html>

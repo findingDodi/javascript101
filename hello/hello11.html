@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coding 101 - anonyme Funktionen2</title>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			let printProgress = function(amount){
+				let fullBar = "";
+
+				for(i = 0; i <= amount; i++){
+					fullBar += "*";
+				}
+
+				console.log(fullBar);
+			};
+
+			let benutzerEingabe = prompt("Anzahl der Sterne eingeben:", "Zum Beispiel 3");
+
+			if(benutzerEingabe >= 1) {
+				printProgress(benutzerEingabe-1);
+
+			} else {
+				console.log("Zahl muss größer oder gleich 1 sein!");
+			}
+
+
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding 101 Ladebalken 1</title>
+	<meta charset="utf-8">
+</head>
+<body style="background-color: black;">
+	<script type="text/javascript">
+
+		let hundert = 100;
+		let prozent = 30;
+		let rest = hundert - prozent;
+		let raute = "#";
+		let output = "";
+
+		output += "[";
+
+		for (let i = 0; i < 10; i++) {
+			if(i < (prozent/10)){
+				output += raute;
+			} else {
+				output += "•";
+			}
+		}
+
+		output += "]";
+		console.log(output + prozent+"%");
+		
+	</script>
+</body>
+</html>

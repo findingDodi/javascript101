@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coding 101 If-Bedingungen</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let nachricht = "Hello"; 
+			let benutzername = prompt("Benutzername eingeben:", "nobody"); //prompt = Funktion mit 2 Parametern für eine Eingabe
+
+			// Bedingung zur Überprüfung, ob die Eingabe korrekt ist
+			if(benutzername == "Dorina" || benutzername == "dorina"){
+				console.log(nachricht +" "+ benutzername); // Ausgabe bei richtiger Eingabe
+			} else if(benutzername == "Hamster") {
+				console.log("Hamster!!!");
+			} else {
+				console.log("You shall not parse '"+ benutzername +"'"); //Ausgabe bei falscher Eingabe
+			}
+
+		</script>
+	</body>
+</html>

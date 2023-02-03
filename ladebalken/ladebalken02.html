@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding 101 Ladebalken 2</title>
+	<meta charset="utf-8">
+</head>
+<body style="background-color: black;">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav">
+				<!-- Coding 101 Aufgaben aus dem github -->
+				<li class="nav-item"><a class="nav-link">WEITERE AUFGABEN</a></li>
+				<li class="nav-item"><a class="nav-link" href="../weeeee/weee02.html">WEEEEE</a></li>
+				<li class="nav-item"><a class="nav-link" href="ladebalken03.html">LADEBALKEN</a></li>
+				<li class="nav-item"><a class="nav-link" href="../messageOfTheDay/messageOfTheDay04.html">MESSAGE OF THE DAY</a></li>
+				<li class="nav-item"><a class="nav-link" href="../matrix/matrix03.html">MATRIX</a></li>
+				<li class="nav-item"><a class="nav-link" href="../testProgramm/testProgramm03.html">TEST PROGRAM</a></li>
+				<li class="nav-item"><a class="nav-link" href="../taschenrechner.html">CALCULATOR</a></li>
+				<li class="nav-item"><a class="nav-link" href="../randomTweet/randomTweet04.html">RANDOM TWEET</a></li>
+				<li class="nav-item"><a class="nav-link" href="../listigerLuchs/listigerLuchs02.html">LISTIGER LUCHS</a></li>
+				<li class="nav-item"><a class="nav-link"> </a></li>
+
+				<!-- weitere Augaben -->
+				<li class="nav-item"><a class="nav-link"> </a></li>
+				<li class="nav-item"><a class="nav-link">WEITERE AUFGABEN</a></li>
+				<li class="nav-item"><a class="nav-link" href="../pets/pets03.html">PETS</a></li>
+				<li class="nav-item"><a class="nav-link" href="../reverseInput.html">REVERSE INPUT</a></li>
+				<li class="nav-item"><a class="nav-link" href="../sonstiges/rollTheDice.html">ROLL THE DICE</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- Page Content-->
+	<div class="container-fluid p-0"></div>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript">
+		
+
+		let state = parseInt(prompt("Enter State:", "Zum Beispiel 30"));
+		//let state = 70;
+		let hundert = 100;
+        let percentage = state / 10;
+		let raute = "#";
+		let punkt = "•"
+		let output = "";
+
+
+		if(state >= 0){
+
+			console.log("Enter State: " + state);
+
+			for (let i = percentage; i <= 10; i++) {
+				output += "[";
+
+				for (let i = 0; i < 10; i++) {
+
+					if(i < percentage){
+						output += raute;
+
+					} else {
+						output += punkt;
+					}						
+				}
+
+				output += "]";
+				console.log(output + state + "%");
+				state += 10;
+				output = "";
+
+			}
+		}
+		
+	</script>
+</body>
+</html>

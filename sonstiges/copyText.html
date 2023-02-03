@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Copy Text</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav">
+					<!-- Coding 101 Aufgaben aus dem github -->
+					<li class="nav-item"><a class="nav-link" href="../weeeee/weee02.html">WEEEEE</a></li>
+					<li class="nav-item"><a class="nav-link" href="../ladebalken/ladebalken03.html">LADEBALKEN</a></li>
+					<li class="nav-item"><a class="nav-link" href="../messageOfTheDay/messageOfTheDay04.html">MESSAGE OF THE DAY</a></li>
+					<li class="nav-item"><a class="nav-link" href="../matrix/matrix03.html">MATRIX</a></li>
+					<li class="nav-item"><a class="nav-link" href="../testProgramm/testProgramm03.html">TEST PROGRAM</a></li>
+					<li class="nav-item"><a class="nav-link" href="./taschenrechner.html">CALCULATOR</a></li>
+					<li class="nav-item"><a class="nav-link" href="../randomTweet/randomTweet04.html">RANDOM TWEET</a></li>
+					<li class="nav-item"><a class="nav-link" href="../listigerLuchs/listigerLuchs02.html">LISTIGER LUCHS</a></li>
+					<li class="nav-item"><a class="nav-link"> </a></li>
+
+					<!-- weitere Augaben -->
+					<li class="nav-item"><a class="nav-link" href="../pets/pets03.html">PETS</a></li>
+					<li class="nav-item"><a class="nav-link" href="../sonstiges/reverseInput.html">REVERSE INPUT</a></li>
+					<li class="nav-item"><a class="nav-link" href="../sonstiges/rollTheDice.html">ROLL THE DICE</a></li>
+					<li class="nav-item"><a class="nav-link" href="../sonstiges/rainbow.html">RAINBOW</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Page Content-->
+		<div class="container-fluid p-0 mt-5 ms-5">
+			<div class="wrapper" style="display: flex;">
+				<h1 id="to_copy" class="mx-5">newsbonus</h1>
+				<button id="copy_button" class="btn btn-secondary" type="button" onclick="copyEvent('to_copy')">Copy</button>
+			</div>
+		</div>
+
+		<script>
+			function copyEvent(id) {
+				var copy_text = document.getElementById(id);
+				window.getSelection().selectAllChildren(copy_text);
+				document.execCommand("Copy")
+				alert("Text wurde erfolgreich kopiert!")
+			}
+		</script>
+	</body>
+</html>

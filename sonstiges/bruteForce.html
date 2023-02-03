@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Matrix 3</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h2>Finding nemo</h2>
+			<div class="col-6">
+				<label for="firstSummand">first summand</label>
+				<input value="0" id="firstSummand" type="number" class="form-control mb-3">
+				<label for="sum">sum</label>
+				<input value="0" id="sum" type="number" class="form-control mb-3">
+				<button class="btn btn-success" type="button" onclick="getSecondSummand();">go</button>
+			</div>
+			<pre id="mathFunction" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+            function getSecondSummand() {
+                let firstSummand = parseInt(document.getElementById("firstSummand").value);
+                let secondSummand = 0;
+                let sum = parseInt(document.getElementById("sum").value);
+
+				if (firstSummand <= sum) {
+					while ((sum - firstSummand) !== secondSummand) {
+                        secondSummand += 1;
+                    }
+					document.getElementById("mathFunction").innerHTML = firstSummand + " + " + secondSummand + " = " + sum;
+
+				} else {
+					document.getElementById("mathFunction").innerHTML = "Sum has to be greater than the first summand! Try again...";
+				}
+			}
+		</script>
+	</body>
+</html>

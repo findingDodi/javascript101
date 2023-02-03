@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Test Programm 3</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid pt-5 ps-5"></div>
+
+		<script type="text/javascript">
+
+			let contextBreak = "**********";
+
+			// Funktion um Zahlen von 1 bis x in ein Array pusht und in die Console logged
+			function numbers(_amount) {
+				let _numbers = '';
+				for (let i = 0; i < _amount; i++) {
+					_numbers += (i + 1) + ' ';
+				}
+
+				return _numbers;
+			}
+
+			// Funktion um Zahlen von 1 bis x in 5er Schritten in ein Array pusht und in die Console logged
+			function numbersModuloFive(_amount) {
+				let _numbers = '';
+				for (let i = 1; i < _amount; i++) {
+					if (i % 5 === 0) {
+						_numbers += i + '\n';
+					}
+				}
+
+				return _numbers;
+			}
+
+			let age = parseInt(prompt("Wie alt bist du ?"));
+
+			if (age >= 18) {
+				console.log("Zugriff gewährt! Du bist über 18.");
+
+				let username = null;
+				let password = null;
+
+				do {
+					username = prompt("Bitte Benutzernamen eingeben!");
+					password = prompt("Bitte Passwort eingeben!");
+
+					if (username === null || password === null) {
+						console.log("Deine Daten sind nicht korrekt! Das Programm wird nicht gestartet!");
+						alert("Deine Daten sind nicht korrekt! Das Programm wird nicht gestartet!");
+						break;
+					}
+
+				} while (username !== "username" || password !== "password");
+
+
+				if (username === "username" && password === "password") {
+					console.log("Benutzername und Passwort sind korrekt! Du bist nun angemeldet!");
+
+					let check1 = confirm("Willst du die Zahlen von 1-999 ausgegeben haben?");
+					if (check1) {
+						console.log(numbers(999));
+					}
+
+					console.log(contextBreak);
+
+					let check2 = confirm("Willst du jede durch 5 teilbare Zahl im Zahlenraum 1-99 ausgegeben haben?");
+					if (check2) {
+						console.log(numbersModuloFive(99));
+					}
+
+					console.log(contextBreak);
+
+					let userText = prompt("Gib hier einen beliebigen Text ein, der in eine Datei gespeichert werden soll!");
+					console.log(userText);
+
+					let fileName = prompt("Gib hier die Datei an, in der der Text gespeichert werden soll!");
+
+					let myBlob = new Blob([userText]);
+					let link = URL.createObjectURL(myBlob);
+					let a = document.createElement('a');
+
+					a.href = link;
+					a.download = fileName + '.txt';
+					a.click();
+
+					alert("Das Programm wurde erfolgreich ausgeführt!");
+
+				}
+
+			} else {
+				console.log("Zugriff verweigert! Du musst mindestens 18 sein!");
+				alert("Zugriff verweigert! Du musst mindestens 18 sein!");
+			}
+
+		</script>
+
+	</body>
+</html>

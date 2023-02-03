@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding 101</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		function myAwesomeFunction(number) {
+			return number * 2;
+		 	// console.log(number * 2);
+		}
+
+		console.log(myAwesomeFunction(3));
+
+		let annon = function(number) {
+			return number / 2;
+			// console.log(number / 2);
+		};
+
+		// console.log(annon());
+
+		// console.log(annon);
+
+		// console.log(myAwesomeFunction);
+
+		console.log(myAwesomeFunction(annon(3)));
+
+		console.log(
+			myAwesomeFunction(
+				function (number) {
+					return number - 10;
+				}(7)
+			)
+		);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Pets 3</title>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/eigene.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Page Content-->
+        <div class="container-fluid">
+            <button class="btn btn-secondary" onclick="hamsterInteraction()" >Hamster Button</button>
+            <div id="output"></div>
+        </div>
+
+        <script type="text/javascript">
+
+            let outputField = document.getElementById("output");
+            let hamsterList = [];
+
+            let Hamster = {
+                name: "I have no name",
+                age: 0,
+                sex: "m/w/d",
+                species: "",
+                toy: "",
+
+                printInfo: function () {
+                    console.log("name: " + this.name + " age: " + this.age + " sex: " + this.sex + " species: " + this.species, " toy: " + this.toy);
+                },
+
+                getInfoHtml: function () {
+                    return "<br/>name: " + this.name +
+                        "<br/>age: " + this.age +
+                        "<br/>sex: " + this.sex +
+                        "<br/>species: " + this.species +
+                        "<br/>toy: " + this.toy +
+                        "<br />";
+                },
+
+                aging: function () {
+                    this.age++;
+                }
+            }
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+
+            function addToList(hamster) {
+                hamsterList.push(hamster);
+            }
+
+            function handleToy(listOfHamster) {
+                for (let i = 0; i < listOfHamster.length; i++) {
+                    hamsterList[i].toy = "";
+                }
+
+                let randomNumber = Math.floor(Math.random() * listOfHamster.length);
+                hamsterList[randomNumber].toy = "ring";
+            }
+
+            let frodo = Object.create(Hamster);
+            frodo.name = "Frodo";
+            frodo.species = "Zwerghamster";
+            frodo.sex = "m";
+            frodo.age = getRandomInt(99);
+            frodo.aging();
+            addToList(frodo);
+
+            let sam = Object.create(Hamster);
+            sam.name = "Sam";
+            sam.species = "Teddyhamster";
+            sam.sex = "m";
+            sam.age = getRandomInt(99);
+            sam.aging();
+            addToList(sam);
+
+            let gandalf = Object.create(Hamster);
+            gandalf.name = "Gandalf";
+            gandalf.species = "Goldhamster";
+            gandalf.sex = "m";
+            gandalf.age = getRandomInt(99);
+            gandalf.aging();
+            addToList(gandalf);
+
+            function hamsterInteraction() {
+                handleToy(hamsterList);
+
+                frodo.aging();
+                frodo.printInfo();
+                outputField.innerHTML = frodo.getInfoHtml();
+
+                sam.aging();
+                sam.printInfo();
+                outputField.innerHTML += sam.getInfoHtml();
+
+                gandalf.aging();
+                gandalf.printInfo();
+                outputField.innerHTML += gandalf.getInfoHtml();
+
+                outputField.innerHTML += "<br/>Summe des Alters: " + (frodo.age + sam.age + gandalf.age);
+            }
+
+        </script>
+
+    </body>
+</html>

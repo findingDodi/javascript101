@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Ping Pong</title>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/eigene.css" rel="stylesheet" />
+    </head>
+    <body class="mt-2 ms-2">
+        <button class="btn btn-secondary" onclick="ping();">ping</button>
+        <button class="btn btn-dark" onclick="pong();">pong</button>
+        <div id="text"></div>
+
+        <script type="text/javascript">
+            function ping() {
+                document.getElementById('text').innerHTML = 'ping';
+            }
+
+            function pong() {
+                document.getElementById('text').innerHTML = 'pong';
+            }
+        </script>
+    </body>
+</html>

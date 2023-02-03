@@ -1,0 +1,61 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#restart {
+    display: none;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+#hunteddodos {
+    margin-right: 2rem;
+}
+
+#dodo1 {
+    bottom: 65%;
+    position: absolute;
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 10s;
+}
+
+#dodo2 {
+    bottom: 45%;
+    position: absolute;
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 5s;
+}
+
+#dodo3 {
+    bottom: 25%;
+    position: absolute;
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 15s;
+}
+
+#dodo4 {
+    bottom: 5%;
+    position: absolute;
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 60s;
+}
+
+@-webkit-keyframes run {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 0;
+    }
+}

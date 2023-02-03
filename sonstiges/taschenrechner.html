@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Taschenrechner</title>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="../css/calculator.css">
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/eigene.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Page Content-->
+        <div class="container-fluid">
+            <div id="calculator">
+                <div id="ergebnis">0</div>
+
+                <div id="calculatorButtons">
+                    <button type="button" id="AC" value="allClear" class="button operations">AC</button>
+                    <button type="button" class="button none"> </button>
+                    <button type="button" class="button none"> </button>
+                    <button type="button" id="divide" value="/" class="button operations">/</button>
+
+                    <button type="button" id="seven" value="7" class="button numbers">7</button>
+                    <button type="button" id="eight" value="8" class="button numbers">8</button>
+                    <button type="button" id="nine" value="9" class="button numbers">9</button>
+                    <button type="button" id="multiply" value="*" class="button operations">*</button>
+
+                    <button type="button" id="four" value="4" class="button numbers">4</button>
+                    <button type="button" id="five" value="5" class="button numbers">5</button>
+                    <button type="button" id="six" value="6" class="button numbers">6</button>
+                    <button type="button" id="minus" value="-" class="button operations">-</button>
+
+                    <button type="button" id="one" value="1" class="button numbers">1</button>
+                    <button type="button" id="two" value="2" class="button numbers">2</button>
+                    <button type="button" id="three" value="3" class="button numbers">3</button>
+                    <button type="button" id="plus" value="+" class="button operations">+</button>
+
+                    <button type="button" id="zero" value="0" class="button numbers">0</button>
+                    <button type="button" class="button none"> </button>
+                    <button type="button" class="button none"> </button>
+                    <button type="button" id="equals" value="=" class="button operations">=</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            let numberA = null;
+            let numberB = null;
+            let operator = "";
+            let currentNumber = 1;
+            let screen = document.querySelector("#ergebnis");
+            let button = document.querySelectorAll(".button");
+
+            function show() {
+                if (numberA == null) {
+                    screen.innerHTML = "0";
+                }
+                else {
+                    screen.innerHTML = numberA + operator;
+                }
+
+                if (numberB != null){
+                    screen.innerHTML += numberB;
+                }
+            }
+
+            function calculate() {
+                switch (operator) {
+                    case "+":
+                        numberA += numberB;
+                        break;
+                    case "-":
+                        numberA -= numberB;
+                        break;
+                    case "*":
+                        numberA *= numberB;
+                        break;
+                    case "/":
+                        numberA /= numberB;
+                        break;
+                }
+
+                numberB = null;
+                operator = "";
+                currentNumber = 1;
+            }
+
+
+            for (let i = 0; i < button.length; i++) {
+                let btn = button [i];
+
+                btn.addEventListener("click", function() {
+                    if (this.value === "+" || this.value === "-" || this.value === "*" || this.value === "/") {
+                        operator = this.value;
+                        currentNumber = 2;
+                        show();
+                        return;
+                    }
+
+                    if (this.value === "allClear") {
+                        numberA = null;
+                        numberB = null;
+                        operator = "";
+                        currentNumber = 1;
+                        show();
+                        return;
+                    }
+
+                    if (this.value === "=") {
+                        calculate();
+                        show();
+                        return;
+                    }
+
+                    if (currentNumber === 1) {
+                        numberA = (numberA * 10) + (this.value * 1);
+                    }
+
+                    if (currentNumber === 2) {
+                        numberB = (numberB * 10) + (this.value * 1);
+                    }
+                    show();
+
+                });
+
+            }
+
+        </script>
+    </body>
+</html>

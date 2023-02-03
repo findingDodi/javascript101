@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pets 2</title>
+	</head>
+	<body>
+
+		<button onclick="hamsterInteraction()">Hamster Button</button>
+		<div id="output"></div>
+
+		<script type="text/javascript">
+
+			let outputField = document.getElementById("output");
+
+			let Hamster = {
+				name: "I have no name",
+				age: 0,
+				sex: "m/w/d",
+				species: "",
+				toy: "",
+				printInfo: function() {
+					console.log("name: " + this.name + " age: " +this.age + " sex: " + this.sex + " species: " + this.species, " toy: " + this.toy);
+				},
+				getInfoHtml: function() {
+					return "<br/>name: " + this.name +
+						"<br/>age: " + this.age +
+						"<br/>sex: " + this.sex +
+						"<br/>species: " + this.species +
+						"<br/>toy: " + this.toy +
+						"<br />";
+				},
+				aging: function() {
+					this.age++;
+				},
+
+				switchToy: function() {
+					if (this.toy === "ball") {
+						this.toy = "";
+					} else if (this.toy === "") {
+						this.toy = "ball"
+					}
+				}
+			}
+
+			function getRandomInt(max) {
+				return Math.floor(Math.random() * max);
+			}
+
+			let frodo = Object.create(Hamster);
+			frodo.name = "Frodo";
+			frodo.species = "Streifenhamster";
+			frodo.sex = "m";
+			frodo.toy = "ball";
+			frodo.age = getRandomInt(99);
+			frodo.aging();
+
+			let sam = Object.create(Hamster);
+			sam.name = "Sam";
+			sam.species = "Goldhamster";
+			sam.sex = "m";
+			sam.age = getRandomInt(99);
+			sam.aging();
+
+			function hamsterInteraction() {
+				frodo.aging();
+				frodo.printInfo();
+				frodo.switchToy();
+				outputField.innerHTML = frodo.getInfoHtml();
+
+				sam.aging();
+				sam.printInfo();
+				sam.switchToy();
+				outputField.innerHTML += sam.getInfoHtml();
+
+				outputField.innerHTML += "<br/>Summe des Alters: " + (frodo.age + sam.age);
+			}
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pets 1</title>
+</head>
+	<body>
+
+		<script type="text/javascript">
+
+			let Hamster = {
+				name: 'I have no name',
+				age: 0,
+				species: '',
+				printInfo: function() {
+					console.log('Name: ' + this.name + ' Age: ' + this.age + ' Species: ' + this.species);
+				},
+
+				aging: function() {
+					this.age++;
+				}
+			};
+
+			let frodo = Object.create(Hamster);
+			frodo.name = 'Frodo';
+			frodo.species = 'Goldhamster';
+			frodo.aging();
+
+			function hamsterInteraction() {
+				frodo.aging();
+				frodo.printInfo();
+			}
+
+
+		</script>
+		<button type="button" onclick="hamsterInteraction()">Hamster</button>
+	</body>
+</html>

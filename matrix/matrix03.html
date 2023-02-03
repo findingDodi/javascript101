@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Matrix 3</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<h2>Get a random Matrix!</h2>
+			<div class="col-6">
+				<label for="height">Height</label>
+				<input id="height" type="number" class="form-control mb-3">
+				<label for="width">Width</label>
+				<input id="width" type="number" class="form-control mb-3">
+				<label for="randoms">Randoms</label>
+				<input id="randoms" type="number" class="form-control mb-3">
+				<button class="btn btn-success" type="button" onclick="getRandomMatrix()">go</button>
+			</div>
+			<pre id="matrix" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+
+            function getRandomNumbers(_randomCharAmount, _height, _width){
+                let _randomArray = [];
+                while (_randomArray.length < _randomCharAmount) {
+
+                    let _randomNumber = Math.floor(Math.random() * (_height * _width)+1);
+                    let _contains = _randomArray.includes(_randomNumber);
+
+                    if (!_contains) {
+                        _randomArray.push(_randomNumber);
+                    }
+                }
+                
+                return _randomArray;
+            }
+
+            function getRandomHeart() {
+                let _hearts = ["💜 ", "💙 ", "💚 ", "🧡 ", "💛 "];
+                let _randomNumber = Math.floor(Math.random() * _hearts.length);
+                return (_hearts[_randomNumber]);
+			}
+
+			function getRandomMatrix() {
+
+                let output = "";
+                let blackHeart = "🖤 "
+                let counter = 0;
+
+                let height = document.getElementById("height").value;
+                let width = document.getElementById("width").value;
+                let randomCharAmount = document.getElementById("randoms").value;
+                let randomNumbers = getRandomNumbers(randomCharAmount, height, width);
+
+
+                for (let i = 0; i < height; i++) {
+
+                    for (let j = 0; j < width; j++) {
+
+                        counter += 1;
+
+                        if(randomNumbers.includes(counter)) {
+                            output += getRandomHeart();
+                        } else {
+                            output += blackHeart;
+                        }
+                    }
+                    output += "<br/>";
+                }
+
+                document.getElementById("matrix").innerHTML = output;
+
+			}
+
+
+
+		</script>
+	</body>
+</html>

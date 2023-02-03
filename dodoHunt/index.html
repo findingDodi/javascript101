@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <title>Dodos</title>
+    </head>
+    <body>
+        <header>
+            <div class="counter">
+                <h2>Hunted:&nbsp</h2>
+                <h2 id="hunteddodos"></h2>
+                <h2>Missed:&nbsp;</h2>
+                <h2 id="misseddodos"></h2>
+            </div>
+
+            <button onclick="restartButton()" id="restart">RESTART</button>
+        </header>
+
+        <div class="container">
+            <img src="dodo1.png" alt="dodo" id="dodo1">
+            <img src="dodo2.png" alt="dodo" id="dodo2">
+            <img src="dodo3.png" alt="dodo" id="dodo3">
+            <img src="dodo4.png" alt="dodo" id="dodo4">
+        </div>
+
+        <script>
+            let dodo1 = document.getElementById('dodo1');
+            let dodo2 = document.getElementById('dodo2');
+            let dodo3 = document.getElementById('dodo3');
+            let dodo4 = document.getElementById('dodo4');
+            let dodos = [dodo1, dodo2, dodo3, dodo4];
+
+            let hunted = 0;
+            let missed = 0;
+
+            function restartButton() {
+                window.location.reload();
+            }
+
+            function doCountTotalDodos() {
+                let counter = hunted + missed;
+                if (counter >= 10) {
+                    for (let i = 0; i < dodos.length; i++) {
+                        removeDodo(dodos[i]);
+                    }
+                    document.getElementById('restart').style.display = 'block';
+                }
+            }
+
+            function removeDodo(dodoToRemove) {
+                dodoToRemove.style.display = 'none';
+                dodoToRemove.style.animation = 'none';
+            }
+
+            async function showDodo(dodoToShow) {
+                await Sleep(1000);
+                let counter = hunted + missed;
+                if (counter >= 10) {
+                    return;
+                }
+
+                dodoToShow.offsetWidth;
+                dodoToShow.style.animation = null;
+                dodoToShow.style.display = 'block';
+            }
+
+            function Sleep(milliseconds) {
+                return new Promise(resolve => setTimeout(resolve, milliseconds));
+            }
+
+            for (let i = 0; i < dodos.length; i++) {
+                dodos[i].addEventListener('click', () => {
+                    removeDodo(dodos[i]);
+                    hunted++;
+                    document.getElementById('hunteddodos').innerHTML = hunted;
+                    doCountTotalDodos();
+                    showDodo(dodos[i]);
+                });
+
+                dodos[i].addEventListener('animationiteration', () => {
+                    missed++;
+                    document.getElementById('misseddodos').innerHTML = missed;
+                    doCountTotalDodos();
+                });
+            }
+        </script>
+    </body>
+</html>

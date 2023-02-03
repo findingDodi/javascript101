@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo-List</title>
+
+	<script>
+
+		let todoIDs = new Set();
+
+        window.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("save").addEventListener("click", addListItem);
+            showListItems();
+        });
+
+
+        function showListItems() {
+            let list = [];
+
+            for (let i = 0; i < localStorage.length; i++) {
+
+                if (localStorage.key(i).includes("todo-")) {
+
+                    let toDo =
+						'<div class="element" id="' + localStorage.key(i) + '">' +
+							'<button type="button" title="deleteItem" onClick="removeListItem(`' + localStorage.key(i) + '`)">x</button>' +
+							'&emsp;' + localStorage.getItem(localStorage.key(i)) +
+						'</div>';
+
+                    list.push(toDo);
+                }
+            }
+
+            list.sort();
+            document.querySelector("#list").innerHTML = list.join("");
+        }
+
+
+        function addListItem() {
+
+            if (document.getElementById("form").reportValidity()) {
+
+                let key = 'todo-' + getNextID().toString();
+                let value = document.getElementById("value").value;
+
+                window.localStorage.setItem(key, value);
+                document.getElementById("form").reset();
+
+                showListItems();
+            }
+        }
+
+        function removeListItem(id) {
+
+            if (document.getElementById(id)) {
+
+                window.localStorage.removeItem(id);
+                document.getElementById(id).remove();
+            }
+        }
+
+        function getNextID() {
+            let maxID = Math.max(todoIDs);
+            console.log(maxID);
+            let newMaxID = maxID + 1;
+            console.log(newMaxID);
+            todoIDs.add(newMaxID);
+            console.log(todoIDs)
+
+            return newMaxID;
+		}
+
+	</script>
+
+</head>
+<body>
+
+<form id="form">
+		<h2>ToDo-Liste</h2>
+
+		<input type="text" id="value" required="required">
+		<button type="button" id="save">Save</button>
+
+		<pre id="list"></pre>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Coding 101</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid pt-5 ps-5"></div>
+		<h2>Listiger Luchs</h2>
+
+		<script type="text/javascript">
+			function printArray(array) {
+				for (let i = 0; i < array.length; i++) {
+					console.log(array[i]);
+				}
+			}
+
+			function sumNumbers(array, count, reversed) {
+				let sum = 0;
+
+				if (reversed === 1){
+					for(let i = array.length - 1; i >= (array.length - count); i--){
+						sum += array[i];
+					}
+				} else {
+					for(let i = 0; i < count; i++){
+						sum += array[i];
+					}
+				}
+
+				return sum;
+			}
+
+			let array = [5, 7, 3, 2, 1, 0, 8, 9, 4, 6]; //0,1,2,3,4,5,6,7,8,9
+			let count = -1;
+			let reversed = -1;
+			let sorted = -1;
+
+			do {
+				count = prompt("Anzahl an aufzuaddierenden Zahlen:");
+			} while (count < 1 || count > array.length)
+
+			do {
+				reversed = prompt("Von Anfang(0) oder Ende(1):");
+			} while (reversed !== 0 && reversed !== 1)
+
+			do {
+				sorted = prompt("Array sortieren: Nein(0) Ja(1)");
+			} while (sorted !== 0 && sorted !== 1)
+
+			if (sorted === 1){
+				printArray(sortArray(array));
+				console.log("==");
+				console.log(sumNumbers(sortArray(array), count, reversed));
+			} else {
+				printArray(array);
+				console.log("==");
+				console.log(sumNumbers(array, count, reversed));
+			}
+		</script>
+	</body>
+</html>

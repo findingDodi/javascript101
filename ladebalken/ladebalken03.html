@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Ladebalken 3</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<h2>Create your Loading Bar</h2>
+			<h4>Push a Button</h4>
+			<div class="btn-group">
+				<button class="btn btn-danger" type="button" onclick="loadingBar(10)">10%</button>
+				<button class="btn btn-danger" type="button" onclick="loadingBar(20)">20%</button>
+				<button class="btn btn-danger" type="button" onclick="loadingBar(30)">30%</button>
+				<button class="btn btn-danger" type="button" onclick="loadingBar(40)">40%</button>
+				<button class="btn btn-warning" type="button" onclick="loadingBar(50)">50%</button>
+				<button class="btn btn-warning" type="button" onclick="loadingBar(60)">60%</button>
+				<button class="btn btn-warning" type="button" onclick="loadingBar(70)">70%</button>
+				<button class="btn btn-warning" type="button" onclick="loadingBar(80)">80%</button>
+				<button class="btn btn-warning" type="button" onclick="loadingBar(90)">90%</button>
+				<button class="btn btn-success" type="button" onclick="loadingBar(100)">100%</button>
+			</div>
+
+			<pre id="loadingBar" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+
+			function createLoadingBarString(_percentage) {
+                let raute = "#";
+                let punkt = "•"
+                let loadingBarString = "[";
+
+                for (let i = 0; i < 10; i++) {
+
+                    if (i < (_percentage)) {
+                        loadingBarString += raute;
+
+                    } else {
+                        loadingBarString += punkt;
+
+                    }
+                }
+
+                loadingBarString += "] ";
+                loadingBarString += (_percentage * 10);
+                loadingBarString += "%";
+
+                return loadingBarString;
+			}
+
+			function loadingBar(state) {
+                let output = "";
+
+				for (let i = state/10; i <= 10; i++) {
+					output += (createLoadingBarString(i) + "<br/>");
+					state += 10;
+				}
+
+                document.getElementById("loadingBar").innerHTML = output;
+			}
+
+		</script>
+	</body>
+</html>

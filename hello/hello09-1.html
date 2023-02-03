@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coding 101 Arrays</title>
+	</head>
+	<body>
+	    <script>
+	    	
+		    function Sleep(milliseconds) {
+		        return new Promise(resolve => setTimeout(resolve, milliseconds));
+		    }
+		    async function test() {
+		        let keep_running = true;
+
+		        while(keep_running){
+		            let number = 3; //prompt("Nummer eingeben: ");
+		            await Sleep(3000);
+
+		            /*if(number > 50) {
+		                break;
+		            }*/
+
+		            console.log("Hamster");
+		        }  
+		    }
+
+		    test();
+
+	    </script>
+  	</body>
+</html>

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 0;
+        padding-left: 0;
+    }
+}
+
+@font-face {
+    font-family: "DiceX";
+    src: url("../assets/fonts/DiceX.ttf");
+}

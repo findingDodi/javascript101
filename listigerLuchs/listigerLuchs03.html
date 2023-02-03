@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Coding 101</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<h2>Listiger Luchs</h2>
+			<div class="col-6">
+				<p>[5, 7, 3, 2, 1, 0, 8, 9, 4, 6]</p>
+				<h3>Wie viele Zahlen des Arrays möchstest du aufaddieren?</h3>
+				<label for="amount">Anzahl</label>
+				<input id="amount" type="number" class="form-control mb-3">
+				<h3>Willst du das Array von vorne oder von hinten aufaddiert haben?</h3>
+				<input type="radio" id="front" name="order" value="1">
+				<label for="front">von vorne</label>
+				<input type="radio" id="back" name="order" value="0">
+				<label for="back">von hinten</label>
+				<p></p>
+				<h3>Willst du das Array vorher sortieren?</h3>
+				<input type="radio" id="yes" name="sort" value="1">
+				<label for="yes">ja</label>
+				<input type="radio" id="no" name="sort" value="0">
+				<label for="no">nein</label>
+				<button class="btn btn-success" type="button" onclick="getSum()">Lösung</button>
+				<p></p>
+				<h3>Ergebnis:</h3>
+				<pre id="sum"></pre>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+
+			function getSum() {
+                let sumArray = [5, 7, 3, 2, 1, 0, 8, 9, 4, 6];
+                let amount = document.getElementById("amount").value;
+                let sum = 0;
+                let order = document.querySelector('input[name="order"]:checked').value;
+                let sort = document.querySelector('input[name="sort"]:checked').value;
+
+
+                if (sort == 0) {
+                    // wenn von vorne aufaddiert werden soll
+                    if (order == 1) {
+                        for (let i = 0; i < amount; i++) {
+                            sum += sumArray[i];
+                        }
+                        document.getElementById("sum").innerHTML = sum.toString();
+
+                    } else {
+                        for (let i = sumArray[-1]; i > amount; i--) {
+                            sum += sumArray[i];
+                        }
+                        document.getElementById("sum").innerHTML = sum.toString();
+                    }
+                }
+
+                // wenn Array sortiert werden soll
+                if (sort == 1) {
+                    sumArray.sort();
+                    // wenn von vorne aufaddiert werden soll
+                    if (order == 1) {
+                        for (let i = 0; i < amount; i++) {
+                            sum += sumArray[i];
+                        }
+                        document.getElementById("sum").innerHTML = sum.toString();
+
+                    } else {
+                        for (let i = sumArray.length; i > amount; i--) {
+                            sum += sumArray[i];
+						}
+                        document.getElementById("sum").innerHTML = sum.toString();
+					}
+                }
+            }
+
+
+		</script>
+	</body>
+</html>

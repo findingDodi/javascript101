@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<title>Random Tweet</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<h2>Create a Random Tweet!</h2>
+	<p>Select your account of Words:</p>	
+	<input id="userAmount" type="number">
+	<button type="button" onclick="randomTweet()">create</button>
+	<p id="randomTweet"></p>
+
+	<script type="text/javascript">
+
+		function randomTweet() {
+			let _quellText = 'Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua';
+			let _quellTextArray = _quellText.split(' ');
+			let _wordAmount = document.getElementById("userAmount").value;
+			let _tweet = '';
+
+			for (let i = 0; i < _wordAmount; i++) {
+				let _randomNumber = Math.floor(Math.random() * _quellTextArray.length);
+				_tweet += _quellTextArray[_randomNumber] + ' ';
+			}
+
+
+			document.getElementById("randomTweet").innerHTML = _tweet;
+		}
+			
+	</script>
+</body>
+</html>

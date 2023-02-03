@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel</title>
+  </head>
+  <body>
+    <script>
+
+        function Sleep(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+        }
+
+        async function test() {
+            let counter = 0;
+
+            while(counter < 10){
+                counter++;
+                /*
+                if(counter > 9){
+                    counter = 0;
+                }*/
+
+                await Sleep(3000);
+                console.log("Hamster");
+            }  
+        }
+
+        test();
+        
+    </script>
+  </body>
+</html>

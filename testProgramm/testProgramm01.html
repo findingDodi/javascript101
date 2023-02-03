@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test Programm 1</title>
+	<meta charset="utf-8">
+</head>
+<body style="background-color: black;">
+	<script type="text/javascript">
+
+		// Funktion um Zahlen von 1 bis x in ein Array pusht und in die Console logged
+ 		function numbers(_amount) {
+ 			let _numbers = '';
+ 			for (let i = 0; i < _amount; i++) {
+ 				_numbers += (i + 1) + ' ';
+ 			}
+
+ 			return _numbers;
+ 		}
+
+ 		// Funktion um Zahlen von 1 bis x in 5er Schritten in ein Array pusht und in die Console logged
+ 		function numbersModuloFive(_amount) {
+ 			let _numbers = '';
+ 			for (let i = 1; i < _amount; i++) {
+ 				if (i % 5 === 0) {
+ 					_numbers += i + '\n';
+ 				}
+ 			}
+ 			
+ 			return _numbers;
+ 		}
+ 		
+ 		let check1 = confirm("Willst du die Zahlen von 1-999 ausgegeben haben?");
+		if (check1) {
+			console.log(numbers(999));
+		} 	
+
+ 		let check2 = confirm("Willst du jede durch 5 teilbare Zahl im Zahlenraum 1-99 ausgegeben haben?");
+		if (check2) {
+			console.log(numbersModuloFive(99));
+		}
+			
+	</script>
+</body>
+</html>

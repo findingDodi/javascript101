@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random tweet</title>
+</head>
+<body>
+	<div>
+		<h2>Create a Random Tweet!</h2>
+		<h3>Step 1</h3>
+		<p>Select your file:</p>
+		<input type="file" id="upload">
+	</div>
+	<p id="randomTweet"></p>
+
+<script type="text/javascript">
+
+    window.onload = function() {
+        const _upload = document.getElementById('upload');
+
+        _upload.addEventListener('change', function(e) {
+            const _file = _upload.files[0];
+            const textType = /text.*/;
+
+            if (_file.type.match(textType)) {
+                let _reader = new FileReader();
+
+                _reader.onload = function(e) {
+                    document.getElementById("randomTweet").innerHTML = _reader.result;
+                }
+
+                _reader.readAsText(_file);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

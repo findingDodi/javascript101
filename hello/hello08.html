@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding 101 Arrays</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		function showPets(pets){
+
+			for (let i = 0; i < pets.length; i++) {
+				console.log(pets[i]);
+			}
+
+			console.log("**********");
+
+		}
+
+		let haustiere = ["Hamster", "Katze", "Alpaka", "Faultier", "Maus"];
+		showPets(haustiere);
+
+		//console.log(haustiere[1]);
+		//console.log(haustiere[4]);
+		//console.log(haustiere.length);
+
+		haustiere[4] = "Ratte"
+		showPets(haustiere);
+
+		haustiere.push("Hase");
+		showPets(haustiere);
+
+		haustiere.splice(2, 1);
+		showPets(haustiere);
+
+		let favoritePet = "";
+		favoritePet = haustiere.pop();
+		console.log("*" + favoritePet);
+		showPets(haustiere);
+
+		haustiere.shift();
+		showPets(haustiere);
+
+
+	</script>
+</body>
+</html>

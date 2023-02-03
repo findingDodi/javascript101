@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>WEEEEE 2</title>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<link href="../css/eigene.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Page Content-->
+		<div class="container-fluid">
+			<h2>Create your WEEEEE</h2>
+			<h4>Step 1: Choose a Number bigger than 1</h4>
+			<label for="inputNumber">Your Number</label>
+			<input id="inputNumber" type="number" class="form-control mb-3">
+			<h4>Step 2: Push the Button</h4>
+			<button class="btn btn-secondary" type="button" onclick="weeeee()">weeeee</button>
+			<pre id="hashtag" class="mt-5"></pre>
+		</div>
+
+		<script type="text/javascript">
+
+			function createHashString(amount) {
+			    let hashString = "";
+			    for (let i = 0; i < amount; i++) {
+			        hashString += "#"
+				}
+			    return hashString;
+			}
+
+			function weeeee() {
+
+                let inputNumber = document.getElementById("inputNumber").value;
+                let output = "";
+
+                if (inputNumber >= 1) {
+                    for (let i = 0; i < inputNumber; i++) {
+                        output += (createHashString(i+1) + "<br/>");
+                        //console.log(createHashString(i+1));
+                    }
+
+                    for (let i = inputNumber; i > 1; i--) {
+                        output += (createHashString(i-1) + "<br/>");
+                        //console.log(createHashString(i-1));
+
+                    }
+                    //console.log(output);
+                    document.getElementById("hashtag").innerHTML = output;
+
+                } else {
+                    alert("Eingabe muss größer oder gleich 1 sein!");
+                }
+			}
+
+
+		</script>
+	</body>
+</html>
