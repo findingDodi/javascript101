@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barista</title>
+</head>
+<body>
+    <script>
+        /*
+        var your_drink;
+
+        var reverse = function(s) {
+            return s.split("").reverse().join("");
+        }
+
+        var barista = {
+            str1: "DEAC",
+            str2: reverse("HABT"),
+            str3: "DSAK",
+
+            request: function (preference) {
+                return preference + " Secret Word: " + this.str2 + this.str3 + this.str1;
+            }
+        };
+
+        barista.request(your_drink);
+         */
+
+        // Our version
+        function reverseString(inputString) {
+            return inputString.split("").reverse().join("");
+        }
+
+        let SecretWord = {
+            part1: "DEAC",
+            part2: reverseString("HABT"),
+            part3: "DSAK",
+
+            get getSecretWord() {
+                return this.part2 + this.part3 + this.part1;
+            }
+        };
+
+        let Barista = {
+            compare(givenWord) {
+                if (givenWord.toUpperCase() === SecretWord.getSecretWord) {
+                    console.log("Here is your free " + yourDrink);
+                } else {
+                    console.log("Sorry :( you have to pay for your " + yourDrink);
+                }
+            }
+        };
+
+        let yourDrink = prompt("Please enter your drink: ");
+        let givenWord = prompt("Please name the secret word: ");
+
+        Barista.compare(givenWord);
+
+    </script>
+</body>
+</html>
