@@ -10,37 +10,40 @@
     <body>
         <div id="checkboxContainer" class="d-flex flex-column m-5">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox1">
+                <input class="form-check-input useless-checkbox" type="checkbox" id="checkbox1">
                 <label class="form-check-label" for="checkbox1">please do check this box</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox2">
+                <input class="form-check-input useless-checkbox" type="checkbox" id="checkbox2">
                 <label class="form-check-label" for="checkbox2">please do check this box</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox3">
+                <input class="form-check-input useless-checkbox" type="checkbox" id="checkbox3">
                 <label class="form-check-label" for="checkbox3">please do check this box</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkbox4">
+                <input class="form-check-input useless-checkbox" type="checkbox" id="checkbox4">
                 <label class="form-check-label" for="checkbox4">please do check this box</label>
             </div>
         </div>
 
         <script>
-            let checkboxes = [...document.getElementsByClassName('form-check-input')];
+            let checkboxes = [...document.getElementsByClassName('useless-checkbox')];
             checkboxes.forEach(checkbox => checkbox.addEventListener('change', useless));
 
             function useless() {
                 let checked = checkboxes.filter(checkbox => checkbox.checked);
 
-                if (checked.length === checkboxes.length) {
-                    let checkboxesWithoutCurrent = [...checkboxes];
-                    let index = checkboxesWithoutCurrent.indexOf(this);
-
-                    checkboxesWithoutCurrent.splice(index, 1);
-                    checkboxesWithoutCurrent[Math.floor(Math.random() * checkboxesWithoutCurrent.length)].checked = false;
+                if (checked.length !== checkboxes.length) {
+                    return;
                 }
+
+                let checkboxesWithoutCurrent = [...checkboxes];
+                let index = checkboxesWithoutCurrent.indexOf(this);
+                checkboxesWithoutCurrent.splice(index, 1);
+
+                let randomIndex = Math.floor(Math.random() * checkboxesWithoutCurrent.length);
+                checkboxesWithoutCurrent[randomIndex].checked = false;
             }
         </script>
     </body>
