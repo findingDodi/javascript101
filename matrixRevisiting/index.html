@@ -30,9 +30,9 @@
         <script>
             const matrixOutput = document.getElementById('matrixOutput');
 
-            const randomChar = '*';
-            const normalChar = '#';
-            const breakingTheLine = '<br>';
+            const RANDOM_CHAR = '*';
+            const NORMAL_CHAR = '#';
+            const LINE_BREAK = '<br>';
 
             function generateMatrix() {
                 let matrixWidth = document.getElementById('matrixWidth').value;
@@ -48,7 +48,7 @@
 
                 for (let y = 0; y < height; y++) {
                     for (let x = 0; x < width; x++) {
-                        matrixArray.push(normalChar);
+                        matrixArray.push(NORMAL_CHAR);
                     }
                 }
 
@@ -58,8 +58,8 @@
 
                 while (randoms > 0) {
                     let randomPosition = Math.floor(Math.random() * matrixArray.length);
-                    if (matrixArray[randomPosition] === normalChar) {
-                        matrixArray[randomPosition] = randomChar;
+                    if (matrixArray[randomPosition] === NORMAL_CHAR) {
+                        matrixArray[randomPosition] = RANDOM_CHAR;
                         randoms--;
                     }
                 }
@@ -73,7 +73,7 @@
                 let counter = 0;
                 for (let i = 0; i < matrixArray.length; i++) {
                     if (counter === parseInt(width)) {
-                        matrixOutput.innerHTML += breakingTheLine;
+                        matrixOutput.innerHTML += LINE_BREAK;
                         counter = 0;
                     }
 
