@@ -35,22 +35,16 @@
             const LINE_BREAK = '<br>';
 
             function generateMatrix() {
-                let matrixWidth = document.getElementById('matrixWidth').value;
-                let matrixHeight = document.getElementById('matrixHeight').value;
-                let matrixRandoms = document.getElementById('matrixRandoms').value;
+                let matrixWidth = parseInt(document.getElementById('matrixWidth').value);
+                let matrixHeight = parseInt(document.getElementById('matrixHeight').value);
+                let matrixRandoms = parseInt(document.getElementById('matrixRandoms').value);
                 let matrixArray = generateMatrixArray(matrixWidth, matrixHeight, matrixRandoms);
 
                 printMatrix(matrixArray, matrixWidth);
             }
 
             function generateMatrixArray(width, height, randoms) {
-                let matrixArray = [];
-
-                for (let y = 0; y < height; y++) {
-                    for (let x = 0; x < width; x++) {
-                        matrixArray.push(NORMAL_CHAR);
-                    }
-                }
+                let matrixArray = new Array(width * height).fill(NORMAL_CHAR);
 
                 if (randoms > matrixArray.length) {
                     randoms = matrixArray.length;
@@ -72,7 +66,7 @@
 
                 let counter = 0;
                 for (let i = 0; i < matrixArray.length; i++) {
-                    if (counter === parseInt(width)) {
+                    if (counter === width) {
                         matrixOutput.innerHTML += LINE_BREAK;
                         counter = 0;
                     }
