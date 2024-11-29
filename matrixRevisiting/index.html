@@ -52,6 +52,10 @@
                     }
                 }
 
+                if (randoms > matrixArray.length) {
+                    randoms = matrixArray.length;
+                }
+
                 while (randoms > 0) {
                     let randomPosition = Math.floor(Math.random() * matrixArray.length);
                     if (matrixArray[randomPosition] === normalChar) {
