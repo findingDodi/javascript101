@@ -15,7 +15,7 @@
             }
 
             .grid-item {
-                width: 19%;
+                width: 20%;
                 height: 150px;
                 visibility: hidden;
                 color: white;
@@ -31,8 +31,9 @@
             const TIME_OUTPUT = document.getElementById('time');
 
             const AMOUNT = 25;
-            const START_DATE = new Date();
-            const START_TIME = START_DATE.getTime();
+            const START_TIME = new Date().getTime();
+
+            let items = [];
 
             for (let i = 0; i < AMOUNT; i++) {
                 let newItem = document.createElement('div');
@@ -40,7 +41,6 @@
                 newItem.classList.add('d-flex');
                 newItem.classList.add('align-items-center');
                 newItem.classList.add('justify-content-center');
-                newItem.classList.add('m-1');
                 newItem.innerHTML = 'Click me';
 
                 if (i === 0) {
@@ -48,19 +48,19 @@
                     newItem.style.backgroundColor = '#198754'
                 }
 
+                items.append(newItem);
                 GRID.appendChild(newItem);
             }
 
-            let items = [...document.getElementsByClassName('grid-item')];
-            items.forEach(item => item.addEventListener('click', reflex));
+            items.forEach(item => item.addEventListener('click', itemClicked));
 
-            function reflex() {
-                this.style.visibility = 'hidden';
+            function itemClicked() {
                 this.value = 'clicked';
-                chooseRandomItem();
+                this.style.visibility = 'hidden';
+                showNextRandomItem();
             }
 
-            function chooseRandomItem() {
+            function showNextRandomItem() {
                 let unclicked = items.filter(item => item.value !== 'clicked');
 
                 if (unclicked.length <= 0) {
@@ -74,8 +74,7 @@
             }
 
             function stopTime() {
-                let stop_date = new Date();
-                let stopTime = stop_date.getTime();
+                let stopTime = new Date().getTime();
                 let playTime = (stopTime - START_TIME) / 1000;
                 TIME_OUTPUT.innerText = playTime.toString() + ' Sec.';
             }
