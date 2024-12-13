@@ -17,8 +17,9 @@
             .grid-item {
                 width: 20%;
                 height: 150px;
-                visibility: hidden;
+                background-color: #198754;
                 color: white;
+                visibility: hidden;
             }
         </style>
     </head>
@@ -43,16 +44,12 @@
                 newItem.classList.add('justify-content-center');
                 newItem.innerHTML = 'Click me';
 
-                if (i === 0) {
-                    newItem.style.visibility = 'visible';
-                    newItem.style.backgroundColor = '#198754'
-                }
-
-                items.append(newItem);
+                items.push(newItem);
                 GRID.appendChild(newItem);
             }
 
             items.forEach(item => item.addEventListener('click', itemClicked));
+            showNextRandomItem();
 
             function itemClicked() {
                 this.value = 'clicked';
@@ -70,7 +67,6 @@
 
                 let randomIndex = Math.floor(Math.random() * unclicked.length);
                 unclicked[randomIndex].style.visibility = 'visible';
-                unclicked[randomIndex].style.backgroundColor = '#198754';
             }
 
             function stopTime() {
