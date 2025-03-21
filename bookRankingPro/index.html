@@ -35,11 +35,39 @@
         </div>
     </form>
     <ul id="books" class="list-group"></ul>
+
+    <div id="myModal" class="modal" tabindex="-1" data-bs-backdrop='static'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Sorry you have no power here :(</p>
+                    <p>Please close this window, because there is another!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
+    // TODO: add books duh
+
     const booksUL = document.getElementById("books");
-    let bestOfTen = [
+
+    if (localStorage.getItem('windowCount') === null) {
+        localStorage.setItem('windowCount', '1');
+        window.addEventListener('beforeunload', function(e){
+            localStorage.removeItem('windowCount');
+        });
+    } else {
+        let myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+            keyboard: false
+        })
+        myModal.toggle();
+    }
+
+
+
+    let bookListRanking = [
         "Zeilenflüstern",
         "Skogen Dynasty",
         "Golden Heritage",
@@ -52,15 +80,14 @@
         "The Love Hypothesis"
     ];
 
-
     if (localStorage.getItem('bookList') === null) {
-        localStorage.setItem('bookList', JSON.stringify(bestOfTen));
-        console.log(localStorage.getItem('bookList'));
+        localStorage.setItem('bookList', JSON.stringify(bookListRanking));
+        //bookListRanking = bestOfTen;
+    } else {
+        bookListRanking = JSON.parse(localStorage.getItem('bookList'));
     }
 
-    bestOfTen = JSON.parse(localStorage.getItem('bookList'));
-
-    for (let i = 0; i < bestOfTen.length; i++) {
+    for (let i = 0; i < bookListRanking.length; i++) {
 
         let bookListItem = document.createElement("li");
         bookListItem.classList.add("list-group-item");
@@ -69,7 +96,7 @@
 
         let bookTitle = document.createElement("span");
         bookTitle.classList.add("book-title");
-        bookTitle.innerText = bestOfTen[i];
+        bookTitle.innerText = bookListRanking[i];
 
         let upVoteButton = document.createElement("button");
         upVoteButton.classList.add("btn", "btn-success");
@@ -102,7 +129,7 @@
             let currentListItemName = currentListItem.firstChild.textContent;
             let previousListItemName = previousListItem.firstChild.textContent;
 
-            let bookListRanking = JSON.parse(localStorage.getItem('bookList'));
+            //let bookListRanking = JSON.parse(localStorage.getItem('bookList'));
 
             let currentListItemIndex = bookListRanking.indexOf(currentListItemName);
             let previousListItemIndex = bookListRanking.indexOf(previousListItemName);
@@ -129,7 +156,7 @@
             let currentListItemName = currentListItem.firstChild.textContent;
             let nextListItemName = nextListItem.firstChild.textContent;
 
-            let bookListRanking = JSON.parse(localStorage.getItem('bookList'));
+            //let bookListRanking = JSON.parse(localStorage.getItem('bookList'));
 
             let currentListItemIndex = bookListRanking.indexOf(currentListItemName);
             let nextListItemIndex = bookListRanking.indexOf(nextListItemName);
